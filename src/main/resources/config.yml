@@ -1,0 +1,29 @@
+# DolfiAttack configuration file
+# Customize the settings below to configure the plugin
+# PlaceholderAPI placeholders can be used where applicable
+
+prefix: "&8[&9DolfiAttack&8]"
+
+chat:
+  welcomeMessage: "Hi §e%player_name%§7, Willkommen auf §aDolfiAttack 1§7!"
+
+command:
+  noPermission: "&cDu darfst diesen command nicht ausführen!"
+spawn:
+  location:
+    x: 0
+    y: 0
+    z: 0
+    yaw: 0
+    pitch: 0
+    world: "world"
+
+maintenance:
+  enabled: false
+  allowed_players:
+
+whitelist:
+  enabled: false
+  # All whitelisted players
+  # Do /whitelist add <player> to add a player
+  allowed_players:

@@ -1,0 +1,16 @@
+name: DolfiAttack
+version: 0.1.3
+main: net.dolfirobots.Main
+api-version: '1.21'
+authors: [ Dolfirobots ]
+description: A simple plugin to reproduce CraftAttack
+depend: ["PlaceholderAPI", "LuckPerms", "ProtocolLib"]
+
+commands:
+  whitelist:
+    description: "Manage the server whitelist"
+    usage: "/whitelist <add|remove|list|enable|disable> [player]"
+  speed:
+  clan:
+  spawn:
+  maintenance:
