@@ -6,6 +6,7 @@ public enum PermissionManager {
 
     COMMAND_WHITELIST("command.whitelist"),
     COMMAND_MAINTENANCE("command.maintenance"),
+    COMMAND_VANISH("command.vanish"),
     COMMAND_BLOCK_BYPASS("command.block_bypass"),
     COMMAND_BLOCK_BYPASS_COREPROTECT("command.block_bypass.coreprotect"),
     COMMAND_SET_SPAWN("command.set_spawn"),
