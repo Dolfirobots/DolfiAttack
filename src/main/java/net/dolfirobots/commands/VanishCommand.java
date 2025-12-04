@@ -17,6 +17,12 @@ public class VanishCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if (sender instanceof Player player) {
+            if (!PermissionManager.COMMAND_VANISH.checkPlayer(player)) {
+                return List.of();
+            }
+        }
+
         return List.of();
     }
 }
