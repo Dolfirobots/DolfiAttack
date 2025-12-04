@@ -12,7 +12,12 @@ import java.util.List;
 public class VanishCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        return false;
+        if (sender instanceof Player player) {
+            if (!PermissionManager.COMMAND_VANISH.checkPlayer(player)) {
+                return true;
+            }
+        }
+        return true;
     }
 
     @Override
