@@ -1,5 +1,6 @@
 package net.dolfirobots.commands;
 
+import net.dolfirobots.utils.PermissionManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
