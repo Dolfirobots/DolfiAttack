@@ -1,6 +1,5 @@
 package net.dolfirobots.commands;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import net.dolfirobots.Main;
 import net.dolfirobots.chat.Messanger;
 import net.dolfirobots.utils.MainConfig;
@@ -13,12 +12,12 @@ import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.checkerframework.checker.units.qual.C;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,7 +32,7 @@ public class MaintenanceCommand implements CommandExecutor, TabCompleter {
     public static void handleToggle(boolean user, CommandSender sender) {
         boolean isEnable = MainConfig.getConfig().getBoolean("maintenance.enabled", false);
         if (isEnable == user) {
-            sendSender(Component.text("Maintenance ", NamedTextColor.YELLOW)
+            sendSender(Component.text("Maintenance Mode", NamedTextColor.YELLOW)
                             .append(Component.text("is already ", NamedTextColor.GRAY))
                             .append(user ? Component.text("enabled", NamedTextColor.GREEN) : Component.text("disabled", NamedTextColor.RED))
                             .append(Component.text("!", NamedTextColor.GRAY)),
@@ -42,7 +41,7 @@ public class MaintenanceCommand implements CommandExecutor, TabCompleter {
         } else {
             MainConfig.getConfig().set("maintenance.enabled", user);
             MainConfig.saveConfig();
-            sendSender(Component.text("Maintenance ", NamedTextColor.YELLOW)
+            sendSender(Component.text("Maintenance Mode", NamedTextColor.YELLOW)
                             .append(Component.text("is now ", NamedTextColor.GRAY))
                             .append(user ? Component.text("enabled", NamedTextColor.GREEN) : Component.text("disabled", NamedTextColor.RED))
                             .append(Component.text("!", NamedTextColor.GRAY)),
@@ -69,7 +68,6 @@ public class MaintenanceCommand implements CommandExecutor, TabCompleter {
         }
 
         List<Map<?, ?>> allowedPlayers = MainConfig.getConfig().getMapList("maintenance.allowed_players");
-
 
         switch (args[0].toLowerCase()) {
             case "enable":
@@ -124,11 +122,7 @@ public class MaintenanceCommand implements CommandExecutor, TabCompleter {
                                         ))
                                 )
                                 .appendSpace()
-                                .append(Component.text("can now join when ", NamedTextColor.GRAY))
-                                .append(Component.text("Maintenance mode", NamedTextColor.YELLOW))
-                                .append(Component.text("is ", NamedTextColor.GRAY))
-                                .append(Component.text("enabled", NamedTextColor.GREEN))
-                                .append(Component.text(".", NamedTextColor.GRAY)),
+                                .append(Component.text("is now allowed!", NamedTextColor.GRAY)),
                                 sender
                         );
                     });
@@ -146,44 +140,28 @@ public class MaintenanceCommand implements CommandExecutor, TabCompleter {
                     MainConfig.saveConfig();
                     sendSender(Component.text(args[1], NamedTextColor.YELLOW)
                             .appendSpace()
-                            .append(Component.text("now can't join when ", NamedTextColor.GRAY))
-                            .append(Component.text("Maintenance mode ", NamedTextColor.YELLOW))
-                            .append(Component.text("is ", NamedTextColor.GRAY))
-                            .append(Component.text("enabled", NamedTextColor.GREEN))
-                            .append(Component.text("!", NamedTextColor.GRAY)),
+                            .append(Component.text("removed from allowed players! ", NamedTextColor.GRAY)),
                             sender
                     );
                 } else {
                     sendSender(Component.text(args[1], NamedTextColor.YELLOW)
                             .appendSpace()
-                            .append(Component.text("already can't join the server when "))
-                            .append(Component.text("Maintenance mode ", NamedTextColor.YELLOW))
-                            .append(Component.text("is ", NamedTextColor.GRAY))
-                            .append(Component.text("enabled", NamedTextColor.GREEN))
-                            .append(Component.text("!", NamedTextColor.GRAY)),
+                            .append(Component.text("is already not allowed!")),
                             sender
                     );
                 }
                 break;
             case "list":
-                List<String> usernames = allowedPlayers.stream()
-                        .map(p -> (String) p.get("name"))
+                List<Component> usernames = allowedPlayers.stream()
+                        .map(currentPlayer -> (String) currentPlayer.get("name"))
                         .filter(Objects::nonNull)
-                        .toList();
-
-                List<Component> usernamesComponents = usernames.stream()
                         .map(name -> Component.text(name, NamedTextColor.YELLOW).asComponent())
                         .toList();
 
                 sendSender(Component.text("There are currently ", NamedTextColor.GRAY)
-                        .append(Component.text(usernames.size(), NamedTextColor.YELLOW))
-                        .appendSpace()
-                        .append(Component.text("users that can join when ", NamedTextColor.GRAY))
-                        .append(Component.text("Maintenance mode ", NamedTextColor.YELLOW))
-                        .append(Component.text("is ", NamedTextColor.GRAY))
-                        .append(Component.text("enabled", NamedTextColor.GREEN))
-                        .append(Component.text(":", NamedTextColor.GRAY))
-                        .append(Component.join(JoinConfiguration.separator(Component.text(", ").color(NamedTextColor.GRAY)), usernamesComponents)),
+                        .append(Component.text(usernames.size(), NamedTextColor.YELLOW)).appendSpace()
+                        .append(Component.text("players allowed: ", NamedTextColor.GRAY))
+                        .append(Component.join(JoinConfiguration.separator(Component.text(", ").color(NamedTextColor.GRAY)), usernames)),
                         sender
                 );
                 break;
@@ -195,7 +173,7 @@ public class MaintenanceCommand implements CommandExecutor, TabCompleter {
     }
 
     public static void sendUsage(CommandSender sender) {
-        Component header = Component.text("⚙ Maintenance Command Help", NamedTextColor.GOLD).decorate(TextDecoration.BOLD);
+        Component header = Component.text("Maintenance Command Help", NamedTextColor.GOLD).decorate(TextDecoration.BOLD);
         Component separator = Component.text("──────────────────────────", NamedTextColor.DARK_GRAY);
         Component general = Component.newline()
                 .append(Component.text("General actions:", NamedTextColor.GRAY));
@@ -231,7 +209,8 @@ public class MaintenanceCommand implements CommandExecutor, TabCompleter {
 
         Component finalMessage = Component.empty()
                 .append(header).appendNewline()
-                .append(separator).append(general).appendNewline()
+                .append(separator)
+                .append(general).appendNewline()
                 .append(enable).appendNewline()
                 .append(disable).append(player).appendNewline()
                 .append(add).appendNewline()
