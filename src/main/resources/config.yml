@@ -20,6 +20,8 @@ spawn:
 
 maintenance:
   enabled: false
+  # All allowed players
+  # Do /maintenance add <player> to add a player
   allowed_players:
 
 whitelist:
