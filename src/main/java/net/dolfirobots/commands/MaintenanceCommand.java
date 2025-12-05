@@ -86,11 +86,8 @@ public class MaintenanceCommand implements CommandExecutor, TabCompleter {
                 for (Map<?, ?> player : allowedPlayers) {
                     if (player.get("name").equals(args[1])) {
                         sendSender(Component.text(args[1], NamedTextColor.YELLOW)
-                                .append(Component.text(" can already join when ", NamedTextColor.GRAY))
-                                .append(Component.text("Maintenance mode ", NamedTextColor.YELLOW))
-                                .append(Component.text("is ", NamedTextColor.GRAY))
-                                .append(Component.text("enabled", NamedTextColor.GREEN))
-                                .append(Component.text(".", NamedTextColor.GRAY)),
+                                .appendSpace()
+                                .append(Component.text("is already allowed!", NamedTextColor.GRAY)),
                                 sender
                         );
                         return true;
