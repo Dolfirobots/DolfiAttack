@@ -86,7 +86,7 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         sendConsole("-".repeat(25));
         sendConsole("§aDolfiAttack §7is now §cdisabled§7!");
-        sendConsole("Version: §e" + getDescription().getVersion());
+        sendConsole("Version: §ev" + getDescription().getVersion());
         sendConsole("-".repeat(25));
         MojangWebAPI.shutdownExecutor();
     }
