@@ -33,7 +33,7 @@ public final class Main extends JavaPlugin {
 
         sendConsole("-".repeat(25));
         sendConsole("§aDolfiAttack §7is now §aenabled§7!");
-        sendConsole("Version: §e" + getDescription().getVersion());
+        sendConsole("Version: §ev" + getDescription().getVersion());
         sendConsole("-".repeat(25));
 
 
