@@ -22,7 +22,7 @@ public class ServerPingListener implements Listener {
                         WrappedServerPing ping = event.getPacket().getServerPings().read(0);
 
                         if (Main.isMaintenanceMode()) {
-                            ping.setVersionName(Color.apply("§cMaintenance"));
+                            ping.setVersionName("§cMaintenance");
                             ping.setVersionProtocol(-1);
 
                             ping.setPlayersOnline(0);
