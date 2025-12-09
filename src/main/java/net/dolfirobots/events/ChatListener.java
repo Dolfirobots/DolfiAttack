@@ -72,7 +72,7 @@ public class ChatListener implements Listener, ChatRenderer {
      * @param player player with the items
      * @return {@link Component}
      */
-    public static Component formatItem(Component currentMessage, Player player) {
+    public static Component itemPlaceholder(Component currentMessage, Player player) {
         Map<String, ItemStack> slotMap = new HashMap<>();
         slotMap.put("main", player.getInventory().getItemInMainHand());
         slotMap.put("off", player.getInventory().getItemInOffHand());
