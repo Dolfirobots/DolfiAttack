@@ -102,7 +102,7 @@ public class WhitelistCommand implements CommandExecutor, TabCompleter {
                 }
                 MojangWebAPI.getUUIDAsync(targetPlayer).thenAccept(uuid -> {
                     if (uuid.isEmpty()) {
-                        Bukkit.getScheduler().runTask(Main.getPlugin(Main.class), () -> {
+                        Bukkit.getScheduler().runTask(Main.getInstance(), () -> {
                                 sendSender(Component.text("§cCould not fetch UUID for player §e" + targetPlayer + "§c. Does this player exist?"), sender);
                         });
                         return;
