@@ -45,7 +45,6 @@ public final class Main extends JavaPlugin {
         }
         sendConsole("Plugins", "§aPlaceholderAPI §7was found!");
 
-
         // ProtocolLib
         if (Bukkit.getPluginManager().getPlugin("ProtocolLib") == null) {
             sendError("Plugins", "§aProtocolLib§c was not found!");
