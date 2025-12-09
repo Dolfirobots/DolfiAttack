@@ -14,7 +14,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
-import org.eclipse.sisu.space.BundleClassSpace;
 
 import java.net.MalformedURLException;
 import java.net.URL;
