@@ -8,7 +8,6 @@ import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import com.comphenix.protocol.wrappers.WrappedServerPing;
 import net.dolfirobots.Main;
 import org.bukkit.event.Listener;
-import org.bukkit.event.server.ServerListPingEvent;
 
 import java.util.ArrayList;
 import java.util.List;
