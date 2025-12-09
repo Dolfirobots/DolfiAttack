@@ -72,9 +72,15 @@ public class Messanger {
 
         Component component = Component.empty();
 
-        if (hours > 0) component = component.append(Component.text(hours, NamedTextColor.YELLOW)).append(Component.text("h ", NamedTextColor.GRAY));
-        if (minutes > 0) component = component.append(Component.text(minutes, NamedTextColor.YELLOW)).append(Component.text("m ", NamedTextColor.GRAY));
-        if (seconds > 0 || (hours == 0 && minutes == 0)) component = component.append(Component.text(seconds, NamedTextColor.YELLOW)).append(Component.text("s", NamedTextColor.GRAY));
+        if (hours > 0) {
+            component = component.append(Component.text(hours, NamedTextColor.YELLOW)).append(Component.text("h ", NamedTextColor.GRAY));
+        }
+        if (minutes > 0) {
+            component = component.append(Component.text(minutes, NamedTextColor.YELLOW)).append(Component.text("m ", NamedTextColor.GRAY));
+        }
+        if (seconds > 0 && (hours == 0)) {
+            component = component.append(Component.text(seconds, NamedTextColor.YELLOW)).append(Component.text("s", NamedTextColor.GRAY));
+        }
 
         return component;
     }
