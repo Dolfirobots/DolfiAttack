@@ -99,6 +99,7 @@ public class ChatListener implements Listener, ChatRenderer {
                                 return Component.text("[Leer]", NamedTextColor.GRAY);
                             }
                             return Component.text("[", NamedTextColor.GRAY)
+                                    .append(Component.text(item.getAmount() + "x ", NamedTextColor.YELLOW))
                                     .append(Component.translatable(item.translationKey(), NamedTextColor.YELLOW)
                                             .hoverEvent(item.asHoverEvent())
                                     )
