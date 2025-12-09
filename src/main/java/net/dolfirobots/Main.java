@@ -55,7 +55,6 @@ public final class Main extends JavaPlugin {
         sendConsole("Plugins", "§aProtocolLib§7 was found!");
         ServerPingListener.register();
 
-
         // LuckPerms
         RegisteredServiceProvider<LuckPerms> provider = Bukkit.getServicesManager().getRegistration(LuckPerms.class);
         if (provider == null) {
