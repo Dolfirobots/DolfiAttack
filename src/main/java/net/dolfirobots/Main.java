@@ -77,6 +77,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinLeaveListener(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new AntiCommandLookup(), this);
+        SleepListener.register();
 
         sendConsole("Configuration", "Loading configuration...");
         MainConfig.load();
