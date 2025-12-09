@@ -37,7 +37,6 @@ public final class Main extends JavaPlugin {
         sendConsole("Version: §ev" + getDescription().getVersion());
         sendConsole("-".repeat(25));
 
-
         // PlaceholderAPI
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
             sendError("Plugins", "§aPlaceholderAPI§c was not found!");
