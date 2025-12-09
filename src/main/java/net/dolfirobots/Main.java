@@ -70,7 +70,6 @@ public final class Main extends JavaPlugin {
         WhitelistCommand.register();
         SpeedCommand.register();
         ClanCommand.register();
-        SpawnCommand.register();
         MaintenanceCommand.register();
 
         sendConsole("Events", "Registering events...");
