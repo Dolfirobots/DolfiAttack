@@ -28,8 +28,8 @@ public class ServerPingListener implements Listener {
                             ping.setPlayersOnline(0);
 
                             List<WrappedGameProfile> profiles = new ArrayList<>();
-                            profiles.add(new WrappedGameProfile(UUID.randomUUID(), Color.apply("§7Currently in Maintenance")));
-                            profiles.add(new WrappedGameProfile(UUID.randomUUID(), Color.apply("§7Try it later again!")));
+                            profiles.add(new WrappedGameProfile(UUID.randomUUID(), "§7Currently in Maintenance"));
+                            profiles.add(new WrappedGameProfile(UUID.randomUUID(), "§7Try it later again!"));
                             ping.setPlayers(profiles);
 
                             event.getPacket().getServerPings().write(0, ping);
