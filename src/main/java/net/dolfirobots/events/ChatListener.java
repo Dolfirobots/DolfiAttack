@@ -39,7 +39,7 @@ public class ChatListener implements Listener, ChatRenderer {
             message = textComponent.replaceText(config);
         }
 
-        message = formatItem(message, player);
+        message = itemPlaceholder(message, player);
 
         event.message(message);
         event.renderer(this);
