@@ -18,6 +18,11 @@ spawn:
     pitch: 0
     world: "world"
 
+settings:
+  # Setting for auto message when they go in a bed
+  bedmsg:
+    players:
+
 maintenance:
   enabled: false
   # All allowed players
