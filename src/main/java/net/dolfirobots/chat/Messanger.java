@@ -1,6 +1,5 @@
 package net.dolfirobots.chat;
 
-import com.comphenix.protocol.PacketType;
 import net.dolfirobots.Main;
 import net.dolfirobots.utils.MainConfig;
 import net.kyori.adventure.text.Component;
