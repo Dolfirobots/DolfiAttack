@@ -4,6 +4,7 @@ import net.dolfirobots.commands.*;
 import net.dolfirobots.events.ChatListener;
 import net.dolfirobots.events.JoinLeaveListener;
 import net.dolfirobots.events.ServerPingListener;
+import net.dolfirobots.events.SleepListener;
 import net.dolfirobots.utils.MainConfig;
 import net.dolfirobots.utils.MojangWebAPI;
 import net.luckperms.api.LuckPerms;
