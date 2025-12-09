@@ -114,7 +114,7 @@ public class WhitelistCommand implements CommandExecutor, TabCompleter {
                     MainConfig.getConfig().set("whitelist.allowed_players", whitelist);
                     MainConfig.saveConfig();
 
-                    Bukkit.getScheduler().runTask(Main.getPlugin(Main.class), () ->
+                    Bukkit.getScheduler().runTask(Main.getInstance(), () ->
                             sendSender(Component.text("§e" + targetPlayer + "§7 has been added to the whitelist."), sender));
                 });
             } else if (action.equalsIgnoreCase("remove")) {
