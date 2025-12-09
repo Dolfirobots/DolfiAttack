@@ -70,6 +70,8 @@ public final class Main extends JavaPlugin {
         SpeedCommand.register();
         ClanCommand.register();
         MaintenanceCommand.register();
+        StatsCommand.register();
+        SettingsCommand.register();
 
         sendConsole("Events", "Registering events...");
         getServer().getPluginManager().registerEvents(new JoinLeaveListener(), this);
