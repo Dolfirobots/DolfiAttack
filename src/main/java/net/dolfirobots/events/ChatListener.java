@@ -45,6 +45,27 @@ public class ChatListener implements Listener, ChatRenderer {
         event.renderer(this);
     }
 
+    public static Component inventoryPlaceholder(Component currentMessage, Player player) {
+        Pattern pattern = Pattern.compile("\\[inventory]");
+        Component message = currentMessage.replaceText(
+                TextReplacementConfig.builder()
+                        .match(pattern)
+                        .replacement(
+                                Component.text("[", NamedTextColor.GRAY)
+                                        .append(Component.text("Inventar", NamedTextColor.YELLOW)
+                                                .hoverEvent(HoverEvent.showText(Component.text(player.getName() + "'s Inventar")))
+                                                .clickEvent(ClickEvent.callback(audience -> {
+                                                    if (audience instanceof Player player1) {
+                                                        player1.openInventory(player.getInventory());
+                                                    }
+                                                })))
+                                        .append(Component.text("]", NamedTextColor.GRAY))
+                        )
+                        .build()
+        );
+        return message;
+    }
+
     /**
      * Formates [item:...] to an item object in the chat
      * @param currentMessage Message with [item:...]
