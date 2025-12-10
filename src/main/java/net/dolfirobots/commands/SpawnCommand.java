@@ -17,7 +17,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SpawnCommand implements CommandExecutor, TabCompleter {
+public class SpawnCommand implements CommandExecutor, TabCompleter, Listener, Runnable {
+
+    public static Set<UUID> cachedPlayers = ConcurrentHashMap.newKeySet();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
