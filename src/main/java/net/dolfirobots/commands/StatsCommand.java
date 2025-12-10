@@ -93,6 +93,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
                     } else {
                         clan = clan.replace("clan_", "").toUpperCase();
                     }
+                    long lastLoginTicks = (System.currentTimeMillis() - player.getLastLogin()) / 50;
 
                     return prefix.append(Component.text("UUID: ", NamedTextColor.GRAY))
                             .append(Component.text(player.getUniqueId().toString(), NamedTextColor.YELLOW))
