@@ -55,10 +55,11 @@ public class SleepListener implements Listener, Runnable {
             Messanger.sendMessage(message, player);
             Messanger.sendMessage(question, player);
         }
-
-        if (cachedPlayers.getOrDefault(player.getUniqueId(), false)) {
-            player.chat("Liege wie");
-        }
+        Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> {
+            if (cachedPlayers.getOrDefault(player.getUniqueId(), false) && player.isSleeping()) {
+                player.chat("Liege wie");
+            }
+        }, 5L);
     }
 
     @Override
