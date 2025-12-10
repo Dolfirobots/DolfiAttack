@@ -116,7 +116,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
                             .append(prefix).append(Component.text("Letzter Login vor: ", NamedTextColor.GRAY))
                             .append(formatTime(lastLoginTicks))
                             .appendNewline()
-                            .append(prefix).append(Component.text("Hat Elytra: ", NamedTextColor.GRAY))
+                            .append(prefix).append(Component.text("Hat Elytra (Funktioniert nur wenn Spieler Online ist): ", NamedTextColor.GRAY))
                             .append(haveElytra ? Component.text("Ja", NamedTextColor.GREEN) : Component.text("Nein", NamedTextColor.RED))
                             .appendNewline()
                             .append(prefix).append(Component.text("Kills: ", NamedTextColor.GRAY))
