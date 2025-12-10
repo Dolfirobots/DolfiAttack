@@ -108,7 +108,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
                             .append(Component.text(player.getStatistic(Statistic.DEATHS), NamedTextColor.YELLOW))
                             .appendNewline()
                             .append(prefix).append(Component.text("Letzter Login vor: ", NamedTextColor.GRAY))
-                            .append(formatTimestamp(Timestamp.from(Instant.ofEpochMilli(System.currentTimeMillis() - player.getLastLogin()))))
+                            .append(formatTime(lastLoginTicks))
                             .appendNewline()
                             .append(prefix).append(Component.text("Kills: ", NamedTextColor.GRAY))
                             .append(Component.text(player.getStatistic(Statistic.PLAYER_KILLS), NamedTextColor.YELLOW))
