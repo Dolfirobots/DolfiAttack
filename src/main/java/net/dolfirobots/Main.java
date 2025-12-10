@@ -68,6 +68,7 @@ public final class Main extends JavaPlugin {
         WhitelistCommand.register();
         SpeedCommand.register();
         ClanCommand.register();
+        SpawnCommand.register();
         MaintenanceCommand.register();
         StatsCommand.register();
         SettingsCommand.register();
