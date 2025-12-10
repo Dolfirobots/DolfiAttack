@@ -95,6 +95,12 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
                     }
                     long lastLoginTicks = (System.currentTimeMillis() - player.getLastLogin()) / 50;
 
+                    boolean haveElytra = false;
+                    Advancement elytraAdvancement = Bukkit.getAdvancement(NamespacedKey.minecraft("end/elytra"));
+                    if (elytraAdvancement == null) {
+                        Messanger.sendConsole("Error by get elytra");
+                    }
+
                     return prefix.append(Component.text("UUID: ", NamedTextColor.GRAY))
                             .append(Component.text(player.getUniqueId().toString(), NamedTextColor.YELLOW))
                             .appendNewline()
