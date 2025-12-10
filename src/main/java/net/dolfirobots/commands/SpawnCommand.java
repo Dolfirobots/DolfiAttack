@@ -44,4 +44,9 @@ public class SpawnCommand implements CommandExecutor, TabCompleter {
         Main.getInstance().getCommand("spawn").setExecutor(new SpawnCommand());
         Main.getInstance().getCommand("spawn").setTabCompleter(new SpawnCommand());
     }
+
+    @Override
+    public void run() {
+        updateCachedPlayers();
+    }
 }
