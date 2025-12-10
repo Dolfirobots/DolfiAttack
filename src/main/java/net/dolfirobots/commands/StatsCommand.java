@@ -117,6 +117,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
     }
 
     public static void register() {
+        Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new StatsCommand(), 10L, 120L);
         Main.getInstance().getCommand("stats").setExecutor(new StatsCommand());
         Main.getInstance().getCommand("stats").setTabCompleter(new StatsCommand());
     }
