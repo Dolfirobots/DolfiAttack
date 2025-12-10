@@ -77,7 +77,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 1) {
-            return Bukkit.getOnlinePlayers().stream().map(Player::getName).toList();
+            return cachedOfflinePlayers.values().stream().toList();
         }
         return List.of();
     }
