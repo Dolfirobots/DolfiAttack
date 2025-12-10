@@ -84,7 +84,6 @@ public class Messanger {
 
         return component;
     }
-
     public static URL getNameMC(UUID uuid) {
         try {
             return new URL("https://namemc.com/profile/" + uuid);

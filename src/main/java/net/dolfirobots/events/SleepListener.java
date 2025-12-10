@@ -22,7 +22,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SleepListener implements Listener, Runnable {
     public static Map<UUID, Boolean> cachedPlayers = new ConcurrentHashMap<>();
 
-
     @EventHandler
     public void onBedEnter(PlayerBedEnterEvent event) {
         Player player = event.getPlayer();

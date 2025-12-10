@@ -8,8 +8,10 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.Statistic;
+import org.bukkit.advancement.Advancement;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,14 +20,15 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static net.dolfirobots.Main.getLuckPerms;
 import static net.dolfirobots.chat.Messanger.formatTime;
-import static net.dolfirobots.chat.Messanger.formatTimestamp;
 import static net.dolfirobots.commands.WhitelistCommand.sendSender;
 
 public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
@@ -100,12 +103,6 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
                         clan = clan.replace("clan_", "").toUpperCase();
                     }
                     long lastLoginTicks = (System.currentTimeMillis() - player.getLastLogin()) / 50;
-
-                    boolean haveElytra = false;
-                    Advancement elytraAdvancement = Bukkit.getAdvancement(NamespacedKey.minecraft("end/elytra"));
-                    if (elytraAdvancement == null) {
-                        Messanger.sendConsole("Error by get elytra");
-                    }
 
                     return prefix.append(Component.text("UUID: ", NamedTextColor.GRAY))
                             .append(Component.text(player.getUniqueId().toString(), NamedTextColor.YELLOW))
