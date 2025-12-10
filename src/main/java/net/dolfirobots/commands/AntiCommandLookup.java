@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class AntiCommandLookup implements Listener {
-    public static final List<String> ALLOWED_COMMANDS = List.of("msg", "spawn", "clan", "pl", "plugins", "msg");
+    public static final List<String> ALLOWED_COMMANDS = List.of("msg", "spawn", "clan", "pl", "plugins", "msg", "stats", "settings");
 
     @EventHandler
     public void onTabComplete(PlayerCommandSendEvent event) {
