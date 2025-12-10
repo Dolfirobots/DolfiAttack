@@ -84,6 +84,12 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
 
     public static CompletableFuture<Component> getStatsMessageOffline(OfflinePlayer player) {
         Component prefix = Component.text("* ", NamedTextColor.DARK_GRAY);
+        Advancement elytraAdvancement = Bukkit.getAdvancement(NamespacedKey.minecraft("end/elytra"));
+        if (elytraAdvancement == null) {
+            Messanger.sendConsole("Error by get elytra");
+        }
+
+        final boolean haveElytra = player.isOnline() ? player.getPlayer().getAdvancementProgress(elytraAdvancement).isDone() : false;
 
         return getLuckPerms().getUserManager().loadUser(player.getUniqueId())
                 .thenApplyAsync(user -> {
