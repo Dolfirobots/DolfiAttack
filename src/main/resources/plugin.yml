@@ -12,6 +12,7 @@ commands:
     usage: "/whitelist <add|remove|list|enable|disable> [player]"
   speed:
   clan:
+  spawn:
   stats:
   settings:
   maintenance:
