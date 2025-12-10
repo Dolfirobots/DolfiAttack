@@ -38,6 +38,9 @@ public class SpawnCommand implements CommandExecutor, TabCompleter {
     }
 
     public static void register() {
+        Bukkit.getScheduler().runTaskTimer(Main.getInstance(), new SpawnCommand(), 5L, 100L);
+        Bukkit.getPluginManager().registerEvents(new SpawnCommand(), Main.getInstance());
+        
         Main.getInstance().getCommand("spawn").setExecutor(new SpawnCommand());
         Main.getInstance().getCommand("spawn").setTabCompleter(new SpawnCommand());
     }
