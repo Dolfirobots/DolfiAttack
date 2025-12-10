@@ -117,4 +117,15 @@ public class StatsCommand implements CommandExecutor, TabCompleter {
         Main.getInstance().getCommand("stats").setExecutor(new StatsCommand());
         Main.getInstance().getCommand("stats").setTabCompleter(new StatsCommand());
     }
+
+    @Override
+    public void run() {
+        updatePlayersCache();
+    }
+
+    public static void updatePlayersCache() {
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+            Arrays.stream(Bukkit.getOfflinePlayers()).forEach(offlinePlayer -> cachedOfflinePlayers.put(offlinePlayer.getUniqueId(), offlinePlayer.getName()));
+        });
+    }
 }
