@@ -26,7 +26,12 @@ public class SpawnCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
-        if (cachedPlayers.contains(player.getUniqueId())) {
+        Advancement elytraAdvancement = Bukkit.getAdvancement(NamespacedKey.minecraft("end/elytra"));
+        if (elytraAdvancement == null) {
+            Messanger.sendMessage(Component.text("There was an error!", NamedTextColor.RED), player);
+        }
+
+        if (player.getAdvancementProgress(elytraAdvancement).isDone()) {
             Messanger.sendMessage(Component.text("Du hast eine Elytra, wofür brauchst du ", NamedTextColor.RED)
                     .append(Component.text("/spawn", NamedTextColor.YELLOW))
                     .append(Component.text("!", NamedTextColor.RED)),
