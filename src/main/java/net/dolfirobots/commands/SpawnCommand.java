@@ -49,32 +49,6 @@ public class SpawnCommand implements CommandExecutor, TabCompleter, Listener, Ru
         return List.of();
     }
 
-    public static void updateCachedPlayers() {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
-            ConfigurationSection config = MainConfig.getConfig().getConfigurationSection("have-elytra");
-            if (config == null) {
-                MainConfig.getConfig().createSection("have-elytra");
-            }
-
-            cachedPlayers.addAll(new HashSet<>(MainConfig.getConfig().getStringList("have-elytra").stream().map(UUID::fromString).toList()));
-        });
-    }
-
-    @EventHandler
-    public void onArmorChange(PlayerArmorChangeEvent event) {
-        Player player = event.getPlayer();
-        ItemStack newArmor = event.getNewItem();
-
-        if (!newArmor.isEmpty() && newArmor.getType() == Material.ELYTRA && cachedPlayers.contains(player.getUniqueId())) {
-            updateCachedPlayers();
-            Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
-                cachedPlayers.add(player.getUniqueId());
-                MainConfig.getConfig().set("have-elytra", cachedPlayers);
-                MainConfig.saveConfig();
-            });
-        }
-    }
-
     public static void register() {
         Main.getInstance().getCommand("spawn").setExecutor(new SpawnCommand());
         Main.getInstance().getCommand("spawn").setTabCompleter(new SpawnCommand());
