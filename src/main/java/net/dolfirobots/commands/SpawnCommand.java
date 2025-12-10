@@ -25,6 +25,16 @@ public class SpawnCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(MainConfig.getPrefix() + "§cOnly players can execute this command!");
             return true;
         }
+
+        if (cachedPlayers.contains(player.getUniqueId())) {
+            Messanger.sendMessage(Component.text("Du hast eine Elytra, wofür brauchst du ", NamedTextColor.RED)
+                    .append(Component.text("/spawn", NamedTextColor.YELLOW))
+                    .append(Component.text("!", NamedTextColor.RED)),
+                    player
+            );
+            return true;
+        }
+
         Messanger.sendMessage(Component.text("Du wurdest zum Spawn teleportiert!", NamedTextColor.GREEN), player);
         if (args.length == 0) {
             player.teleportAsync(new Location(Bukkit.getWorld("world"), 279, 113, -780, 0, 0));
