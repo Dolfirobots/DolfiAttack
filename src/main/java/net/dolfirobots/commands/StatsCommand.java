@@ -28,7 +28,9 @@ import static net.dolfirobots.chat.Messanger.formatTime;
 import static net.dolfirobots.chat.Messanger.formatTimestamp;
 import static net.dolfirobots.commands.WhitelistCommand.sendSender;
 
-public class StatsCommand implements CommandExecutor, TabCompleter {
+public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
+
+    public static Map<UUID, String> cachedOfflinePlayers = new ConcurrentHashMap<>();
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
