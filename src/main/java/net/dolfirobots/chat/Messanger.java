@@ -64,7 +64,7 @@ public class Messanger {
         }
     }
 
-    public static Component formatTime(int ticks) {
+    public static Component formatTime(long ticks) {
         long totalSeconds = ticks / 20;
         long hours = totalSeconds / 3600;
         long minutes = (totalSeconds % 3600) / 60;
