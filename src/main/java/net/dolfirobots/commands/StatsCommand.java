@@ -61,6 +61,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter, Runnable {
                         .append(Component.text("existiert nicht!", NamedTextColor.RED)),
                         sender
                 );
+                return true;
             }
             getStatsMessageOffline(targetPlayer).thenAcceptAsync(result -> {
                 Bukkit.getScheduler().runTask(Main.getInstance(),bukkitTask -> {
