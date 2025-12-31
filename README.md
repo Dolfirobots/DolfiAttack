@@ -8,3 +8,4 @@ You can just take some pices of my code to understand something. :)
 > This plugins is not activly developed!  
 > Why? Because I wanne have time to code on cooler projects than this.
 
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Dolfirobots/DolfiAttack/total?style=for-the-badge)
