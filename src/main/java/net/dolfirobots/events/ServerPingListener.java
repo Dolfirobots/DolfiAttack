@@ -32,7 +32,7 @@ public class ServerPingListener implements Listener {
                             profiles.add(new WrappedGameProfile(UUID.randomUUID(), "§7Try it later again!"));
                             ping.setPlayers(profiles);
 
-                            ping.setMotD(ping.getMotD().toString() + "\n§cCurrently in Maintenance!");
+                            ping.setMotD(ping.getMotD().toString() + "\n§cCurrently in Maintenance!"); // Not working 
 
                             event.getPacket().getServerPings().write(0, ping);
                         }
